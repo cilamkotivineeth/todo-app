@@ -1,0 +1,28 @@
+GET http://localhost:3001/todos/9
+
+
+###
+POST http://localhost:3001/todos/   
+Content-Type: application/json
+
+{
+  "description": "Learn SQL"
+}
+
+###
+PUT http://localhost:3001/todos/9    
+Content-Type: application/json
+
+ {
+        "id": 4,
+        "description": "Learn Mongo DB",
+        "completed": 0
+}
+
+
+###
+DELETE http://localhost:3001/todos/3   
+
+###
+DELETE http://localhost:3001/todos/ 
+
