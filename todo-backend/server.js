@@ -27,8 +27,10 @@ const initializeDbAndServer = async () => {
       );
     `);
 
-    app.listen(3001, () => {
-      console.log("Server started on port 3001");
+    // Bind the server to the port from the environment variable or default to 3001
+    const port = process.env.PORT || 3001; // Render provides a PORT env var
+    app.listen(port, () => {
+      console.log(`Server started on port ${port}`);
     });
   } catch (e) {
     console.error(e.message);
@@ -168,5 +170,3 @@ app.delete("/todos/", async (req, res) => {
     res.status(500).json({ error: "Failed to delete todos" });
   }
 });
-
-
