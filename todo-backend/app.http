@@ -1,8 +1,8 @@
-GET http://localhost:3001/todos/9
+GET http://localhost:10000/todos/9
 
 
 ###
-POST http://localhost:3001/todos/   
+POST http://localhost:10000/todos/   
 Content-Type: application/json
 
 {
@@ -10,7 +10,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3001/todos/9    
+PUT http://localhost:10000/todos/9    
 Content-Type: application/json
 
  {
@@ -21,8 +21,8 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:3001/todos/3   
+DELETE http://localhost:10000/todos/3   
 
 ###
-DELETE http://localhost:3001/todos/ 
+DELETE http://localhost:10000/todos/ 
 
