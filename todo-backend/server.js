@@ -3,6 +3,7 @@ const sqlite3 = require("sqlite3");
 const path = require("path");
 const open = require("sqlite").open;
 
+// Define path to the database file
 const dbPath = path.join(__dirname, "database.db");
 
 const app = express();
@@ -13,6 +14,7 @@ let db = null;
 // Initialize the database and server
 const initializeDbAndServer = async () => {
   try {
+    // Open the SQLite database
     db = await open({
       filename: dbPath,
       driver: sqlite3.Database
@@ -27,17 +29,18 @@ const initializeDbAndServer = async () => {
       );
     `);
 
-    // Bind the server to the port from the environment variable or default to 3001
-    const port = process.env.PORT || 3001; // Render provides a PORT env var
+    // Get the port from environment variables (use default 3001 if not set)
+    const port = process.env.PORT || 3001;
     app.listen(port, () => {
       console.log(`Server started on port ${port}`);
     });
   } catch (e) {
-    console.error(e.message);
-    process.exit(1);
+    console.error("Database connection error:", e.message);
+    process.exit(1); // Exit the process if database initialization fails
   }
 };
 
+// Start the database connection and the server
 initializeDbAndServer();
 
 // GET - Retrieve all todos
@@ -124,6 +127,7 @@ app.patch("/todos/:id", async (req, res) => {
       return res.status(404).json({ error: "Todo not found" });
     }
 
+    // Update description or completed if they are provided in the request body
     const updatedDescription = description !== undefined ? description : todo.description;
     const updatedCompleted = completed !== undefined ? completed : todo.completed;
 
@@ -170,3 +174,4 @@ app.delete("/todos/", async (req, res) => {
     res.status(500).json({ error: "Failed to delete todos" });
   }
 });
+
