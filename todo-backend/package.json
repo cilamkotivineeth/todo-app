@@ -1,5 +1,5 @@
 {
-  "name": "todo-backend",
+  "name": "todo-app",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
@@ -17,5 +17,6 @@
     "sqlite3": "^5.1.7"
   }
 }
+
 
 
