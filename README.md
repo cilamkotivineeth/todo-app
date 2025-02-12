@@ -68,3 +68,115 @@ Example Response:
     "completed": true
   }
 ]
+
+
+2. GET /todos/:id
+Description: Fetch a specific todo by its ID.
+Method: GET
+Parameters:
+id: The ID of the todo (e.g., /todos/1).
+Response: A single todo object.
+Example Response:
+
+json
+Copy
+{
+  "id": 1,
+  "description": "Buy groceries",
+  "completed": false
+}
+3. POST /todos/
+Description: Add a new todo.
+Method: POST
+Request Body:
+json
+Copy
+{
+  "description": "New todo description"
+}
+Response: The newly created todo.
+Example Response:
+
+json
+Copy
+{
+  "id": 3,
+  "description": "New todo description",
+  "completed": false
+}
+4. PUT /todos/:id
+Description: Update a todo's description and completion status by its ID.
+Method: PUT
+Parameters:
+id: The ID of the todo to update (e.g., /todos/1).
+Request Body:
+json
+Copy
+{
+  "description": "Updated todo description",
+  "completed": true
+}
+Response: The updated todo.
+Example Response:
+
+json
+Copy
+{
+  "id": 1,
+  "description": "Updated todo description",
+  "completed": true
+}
+5. PATCH /todos/:id
+Description: Partially update a todo's description or completion status by its ID.
+Method: PATCH
+Parameters:
+id: The ID of the todo to update (e.g., /todos/1).
+Request Body: (Only one field is required: either description or completed)
+json
+Copy
+{
+  "completed": true
+}
+Response: The partially updated todo.
+Example Response:
+
+json
+Copy
+{
+  "id": 1,
+  "description": "Updated todo description",
+  "completed": true
+}
+6. DELETE /todos/:id
+Description: Delete a specific todo by its ID.
+Method: DELETE
+Parameters:
+id: The ID of the todo to delete (e.g., /todos/1).
+Response: A success message.
+Example Response:
+
+json
+Copy
+{
+  "message": "Todo deleted",
+  "deletedTodo": {
+    "id": 1,
+    "description": "Updated todo description",
+    "completed": true
+  }
+}
+7. DELETE /todos/
+Description: Delete all todos.
+Method: DELETE
+Response: A success message.
+Example Response:
+
+json
+Copy
+{
+  "message": "All todos deleted"
+}
+Technologies Used
+Express.js: A fast, unopinionated, minimalist web framework for Node.js.
+SQLite: A lightweight, serverless database engine.
+Node.js: JavaScript runtime used for server-side development.
