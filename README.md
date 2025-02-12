@@ -4,8 +4,8 @@ This is a simple **Todo App API** built using **Express** and **SQLite**. It pro
 
 ## Features
 
-- **GET /todos/**: Fetch all todos.
-- **GET /todos/:id**: Fetch a specific todo by its ID.
+- **GET /todos/**: Fetch all todos. ( example with deployed link : https://todo-app-77y7.onrender.com/todos )
+- **GET /todos/:id**: Fetch a specific todo by its ID.  
 - **POST /todos/**: Add a new todo.
 - **PUT /todos/:id**: Update a todo's description and completion status by its ID.
 - **PATCH /todos/:id**: Partially update a todo (either description or completion status).
