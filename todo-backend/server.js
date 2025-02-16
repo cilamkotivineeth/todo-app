@@ -8,6 +8,8 @@ const dbPath = path.join(__dirname, "database.db");
 
 const app = express();
 app.use(express.json()); // Middleware to parse JSON request bodies
+const cors = require('cors');
+app.use(cors());
 
 let db = null;
 
