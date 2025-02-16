@@ -94,9 +94,14 @@ app.post("/todos/", async (req, res) => {
 });
 
 // PUT - Update a todo (by ID)
+// PUT - Update a todo (by ID)
 app.put("/todos/:id", async (req, res) => {
   const { id } = req.params;
-  const { description, completed } = req.body;
+  const { completed } = req.body;  // Only require the completed field to toggle
+
+  if (completed === undefined) {
+    return res.status(400).json({ error: "Completed status is required" });
+  }
 
   try {
     const todo = await db.get("SELECT * FROM todos WHERE id = ?", [id]);
@@ -106,11 +111,11 @@ app.put("/todos/:id", async (req, res) => {
     }
 
     await db.run(
-      "UPDATE todos SET description = ?, completed = ? WHERE id = ?",
-      [description, completed, id]
+      "UPDATE todos SET completed = ? WHERE id = ?",
+      [completed, id]
     );
 
-    const updatedTodo = { id: parseInt(id), description, completed };
+    const updatedTodo = { id: parseInt(id), description: todo.description, completed };
     res.json(updatedTodo);
   } catch (e) {
     res.status(500).json({ error: "Failed to update todo" });
